@@ -27,8 +27,12 @@ fun QuoteScreen(quoteViewModel: QuoteViewModel) {
     val quotes by quoteViewModel.quotes.observeAsState(initial = emptyList())
     val errorMessage by quoteViewModel.errorMessage.observeAsState()
 
-    Column(modifier = Modifier.padding(16.dp)) {
-        Button(onClick = { quoteViewModel.fetchRandomQuotes() }) {
+    Column(modifier = Modifier
+                              .fillMaxSize()) {
+        Button(modifier = Modifier
+            .align(Alignment.CenterHorizontally)
+            .padding(50.dp),
+            onClick = { quoteViewModel.fetchRandomQuotes() }) {
             Text("Fetch Quote")
         }
 
@@ -40,7 +44,7 @@ fun QuoteScreen(quoteViewModel: QuoteViewModel) {
 
                 Spacer(modifier = Modifier.height(8.dp))
 
-                Button(onClick = { shareQuote(context, "\"${quote.content}\" - ${quote.author}") }) {
+                Button(modifier = Modifier.align(Alignment.CenterHorizontally), onClick = { shareQuote(context, "\"${quote.content}\" - ${quote.author}") }) {
                     Text("Share Quote")
                 }
             }
