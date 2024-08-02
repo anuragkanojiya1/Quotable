@@ -40,7 +40,7 @@ fun QuoteScreen(quoteViewModel: QuoteViewModel) {
 
         quotes.forEach { quote ->
             Column(modifier = Modifier.padding(vertical = 8.dp)) {
-                Text(text = "\"${quote.content}\" - ${quote.author}")
+                Text(modifier = Modifier.padding(16.dp), text = "\"${quote.content}\" - ${quote.author}")
 
                 Spacer(modifier = Modifier.height(8.dp))
 
