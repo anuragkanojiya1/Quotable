@@ -12,17 +12,24 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.randomquotegenerator.ui.theme.RandomQuoteGeneratorTheme
 
 class MainActivity : ComponentActivity() {
+
+    val quoteViewModel: QuoteViewModel by viewModels()
+    private lateinit var navController: NavController
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val quoteViewModel: QuoteViewModel by viewModels()
         enableEdgeToEdge()
         setContent {
             RandomQuoteGeneratorTheme {
-                QuoteScreen(quoteViewModel = quoteViewModel)
+                val navController = rememberNavController()
+
+                NavGraph(navController = navController)
             }
         }
     }
